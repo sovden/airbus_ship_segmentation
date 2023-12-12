@@ -18,6 +18,7 @@ def img_by_path(path, target_size=(256, 256)):
     print(f"image shape after resize: {c_img.shape}")
     return c_img
 
+# TODO: add image paths in the title
 def show_images_segmentation(x, y, yp, dice_coefs = None, batch_size=8):
     columns = 3
     rows = min(batch_size, 8)

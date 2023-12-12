@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 IMG_SIZE = (256, 256)
 BATCH_SIZE = 16
 # WEIGHTS = 'imagenet'
-MODELS_DIR = "saved_models/"
+MODELS_DIR = "../saved_models/"
 WEIGHTS = f"{MODELS_DIR}just_mobilenet_224_075.hdf5" # "imagenet"
 DATA_FRAC_TO_SEARCH = 0.3
 
@@ -22,9 +22,9 @@ DATA_FRAC_TO_SEARCH = 0.3
 #     print("new balance:", generators.train_df["has_ship"].value_counts())
 # train_gen = generators.get_train_generator()
 #
-# classifier = GetMobileNetV2Classifier(input_shape=IMG_SIZE, weights=WEIGHTS)
-# classifier.build_model(summary=False, model_name="lr_finder_classifier")
-# model = classifier.model
+# utils = GetMobileNetV2Classifier(input_shape=IMG_SIZE, weights=WEIGHTS)
+# utils.build_model(summary=False, model_name="lr_finder_classifier")
+# model = utils.model
 
 segmentation_generator = GetSegmentationDataGenerator(batch_size=BATCH_SIZE)
 if DATA_FRAC_TO_SEARCH < 1:

@@ -3,7 +3,7 @@ import os
 import numpy as np
 import pandas as pd
 import PIL
-from data_utils import masks_as_image, resize_mask_array
+from utils.data_utils import masks_as_image, resize_mask_array
 
 TRAIN_V2_DIR_PATH = "C:/Users/Denys/Documents/ml/winstar_internship/train_v2"
 
@@ -37,7 +37,7 @@ class GetClassifierDataGenerator:
 
     def dataframe_preprocess(self, dataframe, balanced=False) -> pd.DataFrame:
         """
-        Simple preprocessing of .csv data for classifier task
+        Simple preprocessing of .csv data for utils task
         """
         dataframe = dataframe[["ImageId", "ships", "has_ship"]].drop_duplicates()
         dataframe["has_ship_vec"] = dataframe['has_ship'].map(lambda x: [x])

@@ -4,7 +4,7 @@ from keras.applications import MobileNetV2 as keras_model
 from keras import models, layers
 from keras.layers import Conv2D, BatchNormalization, Activation, Conv2DTranspose, Concatenate, Input
 from keras.optimizers import Adam
-from metrics_utils import dice_loss, dice_coef, iou
+from utils.metrics_utils import dice_loss, dice_coef, iou
 
 class GetMobileNetV2Classifier:
     def __init__(self, input_shape: tuple,

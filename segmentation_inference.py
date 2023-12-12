@@ -1,16 +1,16 @@
 from keras.models import load_model
 from data_prep import GetSegmentationDataGenerator
-from metrics_utils import dice_loss, dice_coef, iou
-from inference_utils import show_images_segmentation, img_by_path, show_one_image_segmentation, compute_dice_for_inference
-from data_utils import resize_mask_array
+from utils.metrics_utils import dice_loss, dice_coef, iou
+from utils.inference_utils import show_images_segmentation, img_by_path, show_one_image_segmentation, compute_dice_for_inference
+from utils.data_utils import resize_mask_array
 import numpy as np
 
 TARGET_SIZE = (224, 224)
 BATCH_SIZE = 16
 EVALUATE = False
-INFERENCE_BATCH = True
-INFERENCE_IMG = False
-IMG_PATH = "test_image.jpg"
+INFERENCE_BATCH = False
+INFERENCE_IMG = True
+IMG_PATH = "test_images/test_image_7.jpg"
 
 
 model = load_model('saved_models/mobilenetv2_unet.h5', custom_objects={"dice_loss": dice_loss,
@@ -41,8 +41,7 @@ if EVALUATE or INFERENCE_BATCH:
 
         coeficients = [float(compute_dice_for_inference(resize_mask_array(y[i], TARGET_SIZE), yp[i]))
                        for i in range(BATCH_SIZE)]
-        print(coeficients)
+
         show_images_segmentation(x, y, yp,
-                                 # image_paths=
                                  dice_coefs=coeficients,
                                  batch_size=BATCH_SIZE)

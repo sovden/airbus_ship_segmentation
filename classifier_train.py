@@ -23,10 +23,10 @@ if __name__ == "__main__":
         classifier = GetMobileNetV2Classifier(input_shape=(224, 224, 3), weights=WEIGHTS)
         classifier.base_pretrained_model.summary()
         classifier.build_model()
-        # classifier.model.summary()
+        # utils.model.summary()
         classifier.unfreeze_base_model()
         classifier.recompile_model()
-        # classifier.model.summary()
+        # utils.model.summary()
 
         just_mobilenet = classifier.model.get_layer("mobilenetv2_0.75_224")
         just_mobilenet.summary()
@@ -80,7 +80,7 @@ if __name__ == "__main__":
             shuffle=True,
             workers=4)
 
-        # keras.Sequential classifier.model.layers
+        # keras.Sequential utils.model.layers
 
         classifier.model.save(f"{MODELS_DIR}mobilenetv2_224_075_model_version_2.h5")
 

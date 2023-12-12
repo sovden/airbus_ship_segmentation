@@ -1,15 +1,15 @@
 from keras.models import load_model
 from data_prep import GetClassifierDataGenerator
-from metrics_utils import f1_m
+from utils.metrics_utils import f1_m
 import numpy as np
-from inference_utils import show_images_classifier, img_by_path, show_one_image_classifier
+from utils.inference_utils import show_images_classifier, img_by_path, show_one_image_classifier
 
 TARGET_SIZE = (224, 224)
 BATCH_SIZE = 8
 EVALUATE = False
 INFERENCE_BATCH = False
 INFERENCE_IMG = True
-IMG_PATH = "test_image.jpg"
+IMG_PATH = "test_images/test_image_1.jpg"
 
 
 model = load_model('saved_models/mobilenetv2_224_075_model_version_2.h5')
