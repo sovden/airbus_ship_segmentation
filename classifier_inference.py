@@ -12,7 +12,7 @@ INFERENCE_IMG = True
 IMG_PATH = "test_image.jpg"
 
 
-model = load_model('saved_models/mobilenetv2_224_075.h5')
+model = load_model('saved_models/mobilenetv2_224_075_model_version_2.h5')
 
 if INFERENCE_IMG:
     img_array = img_by_path(IMG_PATH, TARGET_SIZE)

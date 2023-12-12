@@ -33,7 +33,7 @@ if DATA_FRAC_TO_SEARCH < 1:
 train_gen = segmentation_generator.get_train_generator()
 
 segmentation = GetMobileUnetSegmentation(weights=WEIGHTS)
-segmentation.build_mobilenetv2_unet(input_shape=(256, 256, 3), summary=False, model_name="lr_finder_segmentation")
+segmentation.build_mobilenetv2_unet(summary=False, model_name="lr_finder_segmentation")
 segmentation.compile_only_decoder(summary=False)
 model = segmentation.model
 

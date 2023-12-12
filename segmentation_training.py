@@ -6,7 +6,7 @@ IMG_SIZE = (224, 224)
 NUM_EPOCHS_DECODER = 1
 NUM_EPOCHS_ALL = 2
 MODELS_DIR = "saved_models/"
-WEIGHTS = f"{MODELS_DIR}just_mobilenet_224_075.hdf5" # "imagenet"
+WEIGHTS = f"{MODELS_DIR}just_mobilenet_224_075_weights_version_1.hdf5" # "imagenet"
 
 if __name__ == "__main__":
 

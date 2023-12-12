@@ -82,8 +82,7 @@ if __name__ == "__main__":
 
         # keras.Sequential classifier.model.layers
 
-        classifier.model.save(f"{MODELS_DIR}mobilenetv2_224_075.h5")
+        classifier.model.save(f"{MODELS_DIR}mobilenetv2_224_075_model_version_2.h5")
 
         just_mobilenet = classifier.model.get_layer(f"mobilenetv2_0.75_224")
-        just_mobilenet.save(f"{MODELS_DIR}just_mobilenet_224_075.h5")
-        just_mobilenet.save_weights(f"{MODELS_DIR}just_mobilenet_224_075_weights.hdf5")
+        just_mobilenet.save_weights(f"{MODELS_DIR}just_mobilenet_224_075_weights_version_2.hdf5")
