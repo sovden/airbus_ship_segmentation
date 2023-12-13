@@ -3,7 +3,7 @@ Project for https://www.kaggle.com/competitions/airbus-ship-detection. Here pres
 1. Weights and model: https://github.com/sovden/airbus_ship_segmentation/tree/master/saved_models
 2. Example of performance: https://github.com/sovden/airbus_ship_segmentation/tree/master/test_images
 ## Data
-EDA could be found in **EDA.ipynb**. Data is images in train_v2 dir and Dataframe dataframes/train_ship_segmentations_v2.csv with ImageId (path) and Mask for each ship
+EDA could be found in **EDA.ipynb**. Data is images in train_v2 dir and Dataframe dataframes/train_ship_segmentations_v2.csv with ImageId (path) and Mask (EncodedPixels) for each ship
 Main insights:
 1. Heavy imbalanced data set for segmentation task, ~ 1 / 10k pixels ships' pixels / all pixels
 2. Mainly water with a little part of land/ports
@@ -11,8 +11,8 @@ Main insights:
 4. Each row in dataframe is certain ship, not image with masks for all ships
 
 ## Model
-It was decided to use UNET with pretrained encoder. For simplicity and time saving MobileNetV2 as encoder was choosed with imagenet weights.This model is relatively simple architecture and low number of parameters while good performance. 
-For better performace, Mobilenet was pretrained with a few epoch as ship classifier. After this, encoder was built from mobilenet layers was and Unet trained.
+It was decided to use UNET with pretrained encoder. For simplicity and time saving, MobileNetV2 with imagenet weights was chosen as encoder.This model has relatively simple architecture and low number of parameters with good performance. 
+For better performace, Mobilenet was pretrained with a few epoch as ship classifier. After this, Unet was build from the pretrained encoder and simple decoder.
 1. Fine Tune MobileNetV2 imagenet on train dataset (balanced dataset, with undersampling of no ship images)
    - 1 epoch just head;
    - a few epochs for head + last conv layers -> ~80% bin_acc
