@@ -3,7 +3,7 @@ Project for https://www.kaggle.com/competitions/airbus-ship-detection. Here pres
 1. Weights and model: https://github.com/sovden/airbus_ship_segmentation/tree/master/saved_models
 2. Example of performance: https://github.com/sovden/airbus_ship_segmentation/tree/master/test_images
 ## Data
-EDA could be found in EDA.ipynb. Data is images in train_v2 dir and Dataframe dataframes/train_ship_segmentations_v2.csv with ImageId (path) and Mask for each ship
+EDA could be found in **EDA.ipynb**. Data is images in train_v2 dir and Dataframe dataframes/train_ship_segmentations_v2.csv with ImageId (path) and Mask for each ship
 Main insights:
 1. Heavy imbalanced data set for segmentation task, ~ 1 / 10k pixels ships' pixels / all pixels
 2. Mainly water with a little part of land/ports
@@ -25,8 +25,24 @@ For scoring dice score was used. For a few epoch training with low batch size (8
 ![batch predict](https://github.com/sovden/airbus_ship_segmentation/blob/master/test_images/batch_predict.png?raw=true)
 
 ## Inference
-Files segmentation_inference.py and inference.ipynb could be used for testing/inference. In case of batch testing - provide correct path to the train data in data_prep.py: _TRAIN_V2_DIR_PATH = "../train_v2"_
+Files **segmentation_inference.py** and **inference.ipynb** could be used for testing/inference. In case of batch testing - provide correct path to the train data in **data_prep.py**: _TRAIN_V2_DIR_PATH = "../train_v2"_
 Test images for inference could be found here: https://github.com/sovden/airbus_ship_segmentation/tree/master/test_images
+
+## How to setup:
+1. requirements.txt
+2. for test on you images: use code from **inference.ipynb**
+3. for batch testing
+  - use **segmentation_inference.py**
+  - define path to the images **data_prep.py**: _TRAIN_V2_DIR_PATH = "../train_v2"_
+  - (optional) redefine test dataframe in **segmentation_inference.py** with next code:
+    ```
+    generators = GetSegmentationDataGenerator(batch_size=BATCH_SIZE)
+    generators.test_df = NEW_TEST_DATAFRAME
+    test_gen = generators.get_test_generator()
+    ```
+  - OR (optional) redefine path for test dataframe in **data_prep.py**: _GetSegmentationDataGenerator._get_train_valid_test_df_
+
+
 ## Possible improvements
 1. More epochs (trined for <10 epochs both classifier and unet)
 2. Play more with LR, simple lr sheduling for epochs was useful
