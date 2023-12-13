@@ -1,5 +1,7 @@
 # AirBus ship Segmentation MobileNetV2 based U-NET
-
+Project for https://www.kaggle.com/competitions/airbus-ship-detection. Here presented just segmentation model, without calculating F2 score from the challenge. Current segmentation model has dice score ~ 0.65 (to many FP on images withoud ships). For only ship images dice score ~0.75
+1. Weights and model: https://github.com/sovden/airbus_ship_segmentation/tree/master/saved_models
+2. Example of performance: https://github.com/sovden/airbus_ship_segmentation/tree/master/test_images
 ## Data
 EDA could be found in EDA.ipynb. Data is images in train_v2 dir and Dataframe dataframes/train_ship_segmentations_v2.csv with ImageId (path) and Mask for each ship
 Main insights:
@@ -20,14 +22,16 @@ For better performace, Mobilenet was pretrained with a few epoch as ship classif
 
 ## Results
 For scoring dice score was used. For a few epoch training with low batch size (8 / 16) resulted model gives dice 0.75 for only ships images. For all images dice ~0.65 for all images, using of classifier to filter FP will probably improve results.
+![batch predict](https://github.com/sovden/airbus_ship_segmentation/blob/master/test_images/batch_predict.png?raw=true)
 
 ## Inference
-Any segmentation_inference.py and inference.ipynb could be used for testing/inference. In case of batch testing - provide correct path to the train data in data_prep.py: _TRAIN_V2_DIR_PATH = "../train_v2"_
-
+Files segmentation_inference.py and inference.ipynb could be used for testing/inference. In case of batch testing - provide correct path to the train data in data_prep.py: _TRAIN_V2_DIR_PATH = "../train_v2"_
+Test images for inference could be found here: https://github.com/sovden/airbus_ship_segmentation/tree/master/test_images
 ## Possible improvements
 1. More epochs (trined for <10 epochs both classifier and unet)
 2. Play more with LR, simple lr sheduling for epochs was useful
 3. Try different size of network
 4. Try different architectures, ResNet should be better, but it bigger 10x in comparison to the MobileNetV2
-5. Code refactoring
+5. Play with augumentaion, model seems have many FP for water traces and ports
+6. Code refactoring
 
