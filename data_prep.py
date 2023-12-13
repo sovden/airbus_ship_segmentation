@@ -5,7 +5,7 @@ import pandas as pd
 import PIL
 from utils.data_utils import masks_as_image, resize_mask_array
 
-TRAIN_V2_DIR_PATH = "C:/Users/Denys/Documents/ml/winstar_internship/train_v2"
+TRAIN_V2_DIR_PATH = "../train_v2"
 
 class GetClassifierDataGenerator:
     def __init__(self, batch_size: int = 8,
